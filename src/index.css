@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+
+@theme {
+  --color-onam-50: #fef7ee;
+  --color-onam-100: #fef0dd;
+  --color-onam-200: #fcdbbb;
+  --color-onam-300: #f9c188;
+  --color-onam-400: #f59e54;
+  --color-onam-500: #f28234;
+  --color-onam-600: #e36820;
+  --color-onam-700: #bc4f1a;
+  --color-onam-800: #964021;
+  --color-onam-900: #7a361e;
+  --color-onam-950: #421a0e;
+  
+  --color-festival-gold: #FFD700;
+  --color-festival-saffron: #FF9933;
+  --color-festival-maroon: #800000;
+  --color-festival-green: #228B22;
+  
+  --font-family-sans: Inter, system-ui, sans-serif;
+  --font-family-serif: Lora, serif;
+}
+
+/* Onam-themed custom styles */
+
+:root {
+  /* Onam color palette */
+  --onam-gold: #FFD700;
+  --onam-red: #DC143C;
+  --onam-green: #228B22;
+  --onam-orange: #FF8C00;
+  --onam-purple: #8A2BE2;
+  --onam-cream: #FFF8DC;
+  --onam-brown: #8B4513;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--onam-cream) 0%, #FFF5E6 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+
+.font-lora {
+  font-family: 'Lora', serif;
+}
+
+/* Pookalam-inspired decorative elements */
+.pookalam-border {
+  background: 
+    radial-gradient(circle at 25% 25%, var(--onam-gold) 0%, transparent 20%),
+    radial-gradient(circle at 75% 25%, var(--onam-red) 0%, transparent 20%),
+    radial-gradient(circle at 25% 75%, var(--onam-green) 0%, transparent 20%),
+    radial-gradient(circle at 75% 75%, var(--onam-orange) 0%, transparent 20%);
+}
+
+.festival-gradient {
+  background: linear-gradient(45deg, var(--onam-gold), var(--onam-orange), var(--onam-red));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--onam-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--onam-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--onam-orange);
+}
