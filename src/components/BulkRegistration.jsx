@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabase';
 import { batchWriteToFirestore } from '../config/firebase';
-import { HOUSES, CLASS_NAMES, HOUSE_COLORS, HOUSE_THEMES } from '../constants';
+import { HOUSES, CLASS_NAMES, HOUSE_COLORS } from '../constants';
 import { Users, CheckCircle, AlertCircle, Save, Clock, Shield, Target } from 'lucide-react';
 
 const BulkRegistration = () => {
@@ -170,7 +170,7 @@ const BulkRegistration = () => {
       setSelectedHouse('');
       
       // Show success message
-      alert(`🎉 Success! Registered ${teamWithHouse.length} participants for ${selectedHouse} house.`);
+      alert(`Success! Registered ${teamWithHouse.length} participants for ${selectedHouse} house.`);
       
     } catch (error) {
       console.error('Submission error:', error);
@@ -184,55 +184,55 @@ const BulkRegistration = () => {
   const getHouseCount = (house) => housesStatus[house]?.participants_count || 0;
 
   return (
-    <div className="min-h-screen py-8 px-4 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
-      <div className="max-w-7xl mx-auto">
-        {/* Professional Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center space-x-2 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-2xl">🌺</span>
-            </div>
-            <div className="text-left">
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
-                RSET Onam Procession 2025
-              </h1>
-              <p className="text-gray-600 font-medium">Team Registration Portal</p>
-            </div>
-          </div>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Register your complete team of 30 participants in one submission. 
-            Select your house and fill in all participant details below.
-          </p>
+    <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 min-h-screen">
+      {/* Header Section */}
+      <div className="text-center py-6 md:py-12 px-4">
+        <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl md:rounded-3xl shadow-lg mb-4 md:mb-6">
+          <Users className="w-6 h-6 md:w-8 md:h-8 text-white" />
         </div>
+        <h1 className="text-2xl md:text-4xl font-bold text-gray-800 mb-2 md:mb-4">
+          Team Registration
+        </h1>
+        <div className="flex items-center justify-center space-x-2 mb-3 md:mb-4">
+          <Shield className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
+          <span className="text-sm md:text-base font-medium text-amber-700">
+            Bulk Registration Portal
+          </span>
+        </div>
+        <p className="text-sm md:text-lg text-gray-700 max-w-2xl mx-auto px-4">
+          Register your complete team of 30 participants in one submission. 
+          Select your house and fill in all participant details below.
+        </p>
+      </div>
 
         {/* House Status Dashboard */}
-        <div className="bg-white rounded-2xl shadow-xl border border-amber-200 p-6 mb-8">
-          <div className="flex items-center space-x-2 mb-6">
-            <Target className="w-6 h-6 text-amber-600" />
-            <h2 className="text-xl font-bold text-gray-800">House Registration Status</h2>
+        <div className="bg-white rounded-2xl shadow-xl border border-amber-200 p-4 md:p-6 mb-6 md:mb-8 mx-4 md:mx-0">
+          <div className="flex items-center space-x-2 mb-4 md:mb-6">
+            <Target className="w-5 h-5 md:w-6 md:h-6 text-amber-600" />
+            <h2 className="text-lg md:text-xl font-bold text-gray-800">House Registration Status</h2>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
             {HOUSES.map(house => {
-              const theme = HOUSE_THEMES[house];
               const count = getHouseCount(house);
               const isComplete = isHouseComplete(house);
               
               return (
                 <div 
                   key={house}
-                  className={`relative p-4 rounded-xl border-2 transition-all duration-200 ${
+                  className={`relative p-3 md:p-4 rounded-xl border-2 transition-all duration-200 ${
                     isComplete 
                       ? 'bg-green-50 border-green-300 shadow-green-100' 
                       : 'bg-white border-gray-200 hover:border-amber-300'
                   }`}
                 >
                   <div className="text-center">
-                    <div className="text-2xl mb-2">{theme.emoji}</div>
-                    <h3 className="font-bold text-gray-800 mb-1">{house}</h3>
-                    <p className="text-xs text-gray-500 mb-2">{theme.description}</p>
+                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <Shield className="w-4 h-4 md:w-5 md:h-5 text-white" />
+                    </div>
+                    <h3 className="font-bold text-gray-800 mb-3 text-sm md:text-base">{house}</h3>
                     
-                    <div className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                    <div className={`inline-flex items-center px-2 md:px-3 py-1 rounded-full text-xs md:text-sm font-medium ${
                       isComplete 
                         ? 'bg-green-100 text-green-800' 
                         : count > 0 
@@ -241,12 +241,12 @@ const BulkRegistration = () => {
                     }`}>
                       {isComplete ? (
                         <>
-                          <CheckCircle className="w-4 h-4 mr-1" />
+                          <CheckCircle className="w-3 h-3 md:w-4 md:h-4 mr-1" />
                           Complete
                         </>
                       ) : (
                         <>
-                          <Users className="w-4 h-4 mr-1" />
+                          <Users className="w-3 h-3 md:w-4 md:h-4 mr-1" />
                           {count}/30
                         </>
                       )}
@@ -255,8 +255,8 @@ const BulkRegistration = () => {
                   
                   {isComplete && (
                     <div className="absolute -top-2 -right-2">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                        <CheckCircle className="w-4 h-4 text-white" />
+                      <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center">
+                        <CheckCircle className="w-3 h-3 md:w-4 md:h-4 text-white" />
                       </div>
                     </div>
                   )}
@@ -266,22 +266,24 @@ const BulkRegistration = () => {
           </div>
         </div>
 
-        {/* Registration Form */}
-        <div className="bg-white rounded-2xl shadow-xl border border-amber-200 overflow-hidden">
+        {/* Registration Form Container */}
+        <div className="px-4 md:px-0">
+          {/* Registration Form */}
+          <div className="bg-white rounded-2xl shadow-xl border border-amber-200 overflow-hidden">
           <form onSubmit={handleSubmit}>
             {/* Form Header */}
-            <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-4">
-              <div className="flex items-center justify-between text-white">
+            <div className="bg-gradient-to-r from-amber-500 to-orange-500 px-4 md:px-6 py-3 md:py-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-white space-y-2 sm:space-y-0">
                 <div className="flex items-center space-x-2">
-                  <Shield className="w-6 h-6" />
-                  <h3 className="text-xl font-bold">Team Registration Form</h3>
+                  <Shield className="w-5 h-5 md:w-6 md:h-6" />
+                  <h3 className="text-lg md:text-xl font-bold">Team Registration Form</h3>
                 </div>
-                <div className="flex items-center space-x-4 text-sm">
+                <div className="flex items-center space-x-2 md:space-x-4 text-xs md:text-sm">
                   <span className="flex items-center space-x-1">
-                    <Users className="w-4 h-4" />
+                    <Users className="w-3 h-3 md:w-4 md:h-4" />
                     <span>{progress.filled}/30 filled</span>
                   </span>
-                  <div className="w-32 bg-amber-600 rounded-full h-2">
+                  <div className="w-20 md:w-32 bg-amber-600 rounded-full h-2">
                     <div 
                       className="bg-white h-2 rounded-full transition-all duration-300"
                       style={{ width: `${(progress.filled / progress.total) * 100}%` }}
@@ -291,24 +293,23 @@ const BulkRegistration = () => {
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-4 md:p-6">
               {/* House Selection */}
-              <div className="mb-6">
-                <label className="block text-lg font-semibold text-gray-800 mb-3">
+              <div className="mb-4 md:mb-6">
+                <label className="block text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                   <span className="flex items-center space-x-2">
-                    <Target className="w-5 h-5 text-amber-600" />
+                    <Target className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
                     <span>Select Your House</span>
                   </span>
                 </label>
                 <select
                   value={selectedHouse}
                   onChange={(e) => setSelectedHouse(e.target.value)}
-                  className="w-full p-4 border-2 border-gray-300 rounded-xl focus:border-amber-500 focus:outline-none bg-white text-lg"
+                  className="w-full p-3 md:p-4 border-2 border-gray-300 rounded-xl focus:border-amber-500 focus:outline-none bg-white text-base md:text-lg"
                   disabled={isSubmitting}
                 >
                   <option value="">Choose your house...</option>
                   {HOUSES.map(house => {
-                    const theme = HOUSE_THEMES[house];
                     const isComplete = isHouseComplete(house);
                     
                     return (
@@ -317,7 +318,7 @@ const BulkRegistration = () => {
                         value={house} 
                         disabled={isComplete}
                       >
-                        {theme.emoji} {house} {theme.description} {isComplete ? '(Registration Complete)' : ''}
+                        {house} {isComplete ? '(Registration Complete)' : ''}
                       </option>
                     );
                   })}
@@ -340,27 +341,27 @@ const BulkRegistration = () => {
               )}
 
               {/* Participants Table */}
-              <div className="mb-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
-                  <Users className="w-5 h-5 text-amber-600" />
+              <div className="mb-4 md:mb-6">
+                <h3 className="text-base md:text-lg font-semibold text-gray-800 mb-3 md:mb-4 flex items-center space-x-2">
+                  <Users className="w-4 h-4 md:w-5 md:h-5 text-amber-600" />
                   <span>Participant Details (30 Required)</span>
                 </h3>
                 
                 <div className="border border-gray-200 rounded-xl overflow-hidden">
-                  <div className="overflow-x-auto max-h-96 overflow-y-auto">
+                  <div className="overflow-x-auto max-h-80 md:max-h-96 overflow-y-auto">
                     <table className="w-full">
                       <thead className="bg-gray-50 sticky top-0">
                         <tr>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200">
+                          <th className="px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-semibold text-gray-700 border-b border-gray-200">
                             #
                           </th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200">
-                            Participant Name *
+                          <th className="px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-semibold text-gray-700 border-b border-gray-200">
+                            Name *
                           </th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200">
+                          <th className="px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-semibold text-gray-700 border-b border-gray-200">
                             College ID *
                           </th>
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700 border-b border-gray-200">
+                          <th className="px-2 md:px-4 py-2 md:py-3 text-left text-xs md:text-sm font-semibold text-gray-700 border-b border-gray-200">
                             Class
                           </th>
                         </tr>
@@ -368,34 +369,34 @@ const BulkRegistration = () => {
                       <tbody>
                         {team.map((participant, index) => (
                           <tr key={index} className="border-b border-gray-100 hover:bg-amber-25 transition-colors">
-                            <td className="px-4 py-3 text-sm font-medium text-gray-500">
+                            <td className="px-2 md:px-4 py-2 md:py-3 text-xs md:text-sm font-medium text-gray-500">
                               {index + 1}
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="px-2 md:px-4 py-2 md:py-3">
                               <input
                                 type="text"
                                 value={participant.name}
                                 onChange={(e) => handleInputChange(index, 'name', e.target.value)}
                                 placeholder="Enter full name"
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-sm"
+                                className="w-full p-1.5 md:p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-xs md:text-sm"
                                 disabled={isSubmitting}
                               />
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="px-2 md:px-4 py-2 md:py-3">
                               <input
                                 type="text"
                                 value={participant.college_id}
                                 onChange={(e) => handleInputChange(index, 'college_id', e.target.value)}
                                 placeholder="College ID"
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-sm uppercase"
+                                className="w-full p-1.5 md:p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-xs md:text-sm uppercase"
                                 disabled={isSubmitting}
                               />
                             </td>
-                            <td className="px-4 py-3">
+                            <td className="px-2 md:px-4 py-2 md:py-3">
                               <select
                                 value={participant.class}
                                 onChange={(e) => handleInputChange(index, 'class', e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-sm"
+                                className="w-full p-1.5 md:p-2 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-xs md:text-sm"
                                 disabled={isSubmitting}
                               >
                                 {CLASS_NAMES.map(className => (
@@ -414,11 +415,11 @@ const BulkRegistration = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="text-center pt-4 border-t border-gray-200">
+              <div className="text-center pt-3 md:pt-4 border-t border-gray-200">
                 <button
                   type="submit"
                   disabled={isSubmitting || !selectedHouse || isHouseComplete(selectedHouse) || progress.filled < 30}
-                  className={`inline-flex items-center space-x-3 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-200 ${
+                  className={`inline-flex items-center space-x-2 md:space-x-3 px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold text-base md:text-lg transition-all duration-200 ${
                     isSubmitting || !selectedHouse || isHouseComplete(selectedHouse) || progress.filled < 30
                       ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                       : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:from-amber-600 hover:to-orange-600 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
@@ -426,18 +427,18 @@ const BulkRegistration = () => {
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                      <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white"></div>
                       <span>Registering Team...</span>
                     </>
                   ) : (
                     <>
-                      <Save className="w-5 h-5" />
+                      <Save className="w-4 h-4 md:w-5 md:h-5" />
                       <span>Submit Team Registration</span>
                     </>
                   )}
                 </button>
                 
-                <p className="text-sm text-gray-500 mt-3">
+                <p className="text-xs md:text-sm text-gray-500 mt-2 md:mt-3 px-4">
                   {progress.filled < 30 && `Please fill in ${30 - progress.filled} more participant(s) to submit.`}
                   {selectedHouse && isHouseComplete(selectedHouse) && 'This house has already completed registration.'}
                   {!selectedHouse && 'Please select a house to proceed.'}
@@ -446,7 +447,7 @@ const BulkRegistration = () => {
             </div>
           </form>
         </div>
-      </div>
+        </div>
     </div>
   );
 };

@@ -20,35 +20,6 @@ export const HOUSE_COLORS = {
   ARYANS: '#16A34A'      // Green
 };
 
-// House themes and descriptions
-export const HOUSE_THEMES = {
-  SPARTANS: { 
-    emoji: '⚔️', 
-    description: 'Brave Warriors', 
-    color: 'red' 
-  },
-  MUGHALS: { 
-    emoji: '👑', 
-    description: 'Royal Dynasty', 
-    color: 'purple' 
-  },
-  VIKINGS: { 
-    emoji: '🛡️', 
-    description: 'Norse Legends', 
-    color: 'blue' 
-  },
-  RAJPUTS: { 
-    emoji: '🏰', 
-    description: 'Noble Fighters', 
-    color: 'orange' 
-  },
-  ARYANS: { 
-    emoji: '🌟', 
-    description: 'Ancient Heroes', 
-    color: 'green' 
-  }
-};
-
 // Onam theme colors
 export const THEME_COLORS = {
   gold: '#FFD700',
