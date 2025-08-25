@@ -6,6 +6,14 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   css: {
-    postcss: false, // Disable PostCSS since we're using Tailwind Vite plugin
+    postcss: false,
+    preprocessorOptions: {
+      css: {
+        charset: false
+      }
+    }
   },
+  build: {
+    target: 'esnext'
+  }
 })

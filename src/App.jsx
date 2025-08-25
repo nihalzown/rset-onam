@@ -87,21 +87,21 @@ function App() {
       </main>
 
       {/* Footer */}
-              {/* Footer */}
-        <footer className="bg-gradient-to-r from-amber-50 to-orange-50 border-t border-amber-200/50 px-4 md:px-8 py-4 md:py-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center">
-              <p className="text-gray-600 font-medium text-sm md:text-base">
-                RSET Onam Procession 2025 - Official Registration Portal
-              </p>
-              <p className="text-gray-500 text-xs md:text-sm mt-1">
-                Powered by RSET Student Council
-              </p>
-            </div>
+      <footer className="bg-gradient-to-r from-amber-50 to-orange-50 border-t border-amber-200/50 px-4 md:px-8 py-4 md:py-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <p className="text-gray-600 font-medium text-sm md:text-base">
+              RSET Onam Procession 2025 - Official Registration Portal
+            </p>
+            <p className="text-gray-500 text-xs md:text-sm mt-1">
+              Powered by RSET Student Council
+            </p>
           </div>
-        </footer>
+                </div>
+      </footer>
     </div>
   );
 }
 
 export default App;
+

@@ -13,8 +13,7 @@ const AdminLogin = ({ onLoginSuccess }) => {
     setError('');
 
     try {
-      // In a real application, this would authenticate with Supabase
-      // For demo purposes, using hardcoded credentials
+      // Authentication with hardcoded credentials
       if (credentials.username === 'admin@rset-onam.edu' && credentials.password === 'admin123') {
         localStorage.setItem('admin_authenticated', 'true');
         localStorage.setItem('admin_session', Date.now().toString());
@@ -118,15 +117,6 @@ const AdminLogin = ({ onLoginSuccess }) => {
             )}
           </button>
         </form>
-
-        {/* Demo Credentials */}
-        <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-          <h3 className="text-sm font-medium text-blue-800 mb-2">Demo Credentials:</h3>
-          <p className="text-xs text-blue-700">
-            <strong>Email:</strong> admin@rset-onam.edu<br />
-            <strong>Password:</strong> admin123
-          </p>
-        </div>
       </div>
     </div>
   );
